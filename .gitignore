@@ -3,6 +3,8 @@ __pycache__/
 *.pyc
 *.pyo
 .ipynb_checkpoints/
+node_modules/
+
 # Large CIC-IDS2017 PCAPs
 data/pcaps/*.pcap
 data/pcaps/*.pcapng
@@ -26,6 +28,18 @@ output/*.json
 # Training artifacts
 catboost_info/
 *.egg-info/
-dist/
-build/
+/dist/
+/build/
 .env
+
+# LaTeX artifacts
+report.aux
+report.log
+report.lof
+report.lot
+report.out
+report.toc
+
+# Webapp
+webapp/backend/venv/
+webapp/backend/uploads/*
