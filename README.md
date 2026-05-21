@@ -141,6 +141,8 @@ Download CIC-IDS2017 from https://www.unb.ca/cic/datasets/ids-2017.html:
 
 ## Training Pipeline
 
+> **Pre-trained models are included** in the `models/` directory. You can use them directly or train your own following the steps below.
+
 ### 1. Generate Dataset
 
 ```bash

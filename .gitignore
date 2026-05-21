@@ -17,9 +17,7 @@ data/csvs/
 data/processed/*.csv
 data/processed/*.joblib
 
-# Trained models
-models/*.joblib
-models/*.png
+# Trained model artifacts (tracked — users can retrain or use ours)
 
 # Runtime output
 logs/*.log
