@@ -366,7 +366,8 @@ The original CIC-IDS2017 labels are mapped to our training and evaluation classe
 \begin{table}[H]
 \centering
 \caption{Label Mapping for Training and Zero-Day Evaluation}
-\begin{tabularx}{\textwidth}{lXl}
+\small
+\begin{tabular}{l p{5.5cm} l}
 \toprule
 \textbf{CIC-IDS2017 Label} & \textbf{Description} & \textbf{Mapped To} \\
 \midrule
@@ -376,9 +377,9 @@ FTP-Patator, SSH-Patator & Brute force tools & \textbf{BruteForce} (training) \\
 PortScan & Port scanning activity & \textbf{PortScan} (training) \\
 DDoS & Distributed denial of service & \textbf{DDoS} (zero-day eval) \\
 Bot & Botnet activity & \textbf{Botnet} (zero-day eval) \\
-Web Attack variants & XSS, SQLi, Brute Force Web & \textbf{WebAttack} (zero-day eval) \\
+Web Attack: Brute Force, XSS, SQL Injection & Application-layer attacks on web servers & \textbf{WebAttack} (zero-day eval) \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 The three zero-day classes (DDoS, Botnet, WebAttack) are intentionally excluded from training. They are used exclusively during evaluation to validate the system's ability to detect and flag unfamiliar attack patterns.
