@@ -67,7 +67,6 @@ Traffic (PCAP / Live)
 │   ├── generate_test_pcaps.sh      # Create test scenario PCAPs
 │   ├── run_offline_tests.sh        # Run all offline tests
 │   └── run_live_tests.sh           # Run all live tests
-├── notebooks/
 │   ├── 01_dataset_preparation.ipynb
 │   ├── 02_tier1_training.ipynb
 │   └── 03_tier2_training.ipynb
