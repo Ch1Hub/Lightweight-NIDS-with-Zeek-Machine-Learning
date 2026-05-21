@@ -7,7 +7,6 @@ __pycache__/
 data/pcaps/*.pcap
 data/pcaps/*.pcapng
 data/pcaps/zeek_logs/
-data/pcaps/test_scenarios/
 
 # CIC-IDS2017 label files
 data/csv/*.csv
