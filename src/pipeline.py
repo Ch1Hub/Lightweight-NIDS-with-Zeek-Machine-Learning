@@ -146,6 +146,23 @@ class LivePipeline:
         self._load_shap(model_dir)
         logger.info("All models loaded for live pipeline")
 
+    def _load_shap(self, model_dir: str = "models"):
+        import joblib
+        try:
+            t1_model = self.tier1.lgbm_model
+            feat_order = self.tier1.feature_order
+            self.shap_explainer.load_tier1(t1_model, feat_order)
+            logger.info("Tier-1 SHAP explainer loaded")
+        except Exception as e:
+            logger.warning("Tier-1 SHAP explainer not loaded: %s", e)
+        try:
+            t2_model = self.tier2.model
+            feat_order = self.tier2.feature_order
+            self.shap_explainer.load_tier2(t2_model, feat_order)
+            logger.info("Tier-2 SHAP explainer loaded")
+        except Exception as e:
+            logger.warning("Tier-2 SHAP explainer not loaded: %s", e)
+
     def process_window(self, conn_row: dict) -> dict:
         self.window_id_counter += 1
         wid = self.window_id_counter
