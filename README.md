@@ -290,6 +290,42 @@ Features are extracted from PCAPs via Zeek at both training and inference time �
 
 ---
 
+## Known Limitations
+
+- **Application-layer attacks** (SQLi, XSS) are invisible to flow-level features — the model only sees connection metadata
+- **BruteForce detection** requires long-duration connections (8-12s) matching CIC-IDS2017 patterns; rapid SSH scans on loopback may be missed
+- **Zero-day DDoS** shares per-flow features with DoS — Tier-2 classifies it as DoS with high confidence
+- **Live ICMP capture** is limited — ICMP floods produce few conn.log entries in live mode
+
+## Dependencies
+
+```
+lightgbm>=4.0      catboost>=1.2      scikit-learn>=1.3
+pandas>=2.0        numpy>=1.24        joblib>=1.3
+shap>=0.42         matplotlib>=3.7    pyarrow>=14.0
+```
+
+## Labeling Approach
+
+The CIC-IDS2017 CSV files provide ground-truth labels. Two matching strategies are supported:
+
+| Strategy | When Used | Method |
+|---|---|---|
+| **IP-based** | CSV has Source IP + Destination IP columns | Direct (src_ip, dst_ip) → label lookup |
+| **Feature-based** | IP columns missing (parquet-converted CSVs) | NearestNeighbor on (dst_port, duration, bytes, pkts) |
+
+The `scripts/relabel_dataset.py` script handles the feature-based fuzzy matching when the original IP-labeled CSVs are unavailable.
+
+---
+
+## Author
+
+**Ch1Hub** — yc.chikhaoui@esi-sba.dz
+
+École Nationale Supérieure d'Informatique (ESI), Sidi Bel Abbès, Algeria
+
+---
+
 ## License
 
 This project is developed for academic research purposes. CIC-IDS2017 dataset is property of the Canadian Institute for Cybersecurity.
